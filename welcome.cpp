@@ -14,10 +14,11 @@ int Welcome()
 	printf("|==================================================|\n");
 	printf("|                  NUMBER CONVERSION               |\n");
 	printf("|==================================================|\n");
-	printf("|1. Decimal to Biner                               |\n");
-	printf("|2. Decimal to Oktal                               |\n");
+	printf("|1. Decimal to Binary                              |\n");
+	printf("|2. Decimal to Octal                               |\n");
 	printf("|3. Decimal to Hexadecimal                         |\n");
-	printf("|4. Biner to Decimal                               |\n");
+	printf("|4. Binary to Decimal                              |\n");
+	printf("|5. Octal to Decimal                               |\n");
 	printf("|==================================================|\n");
 	printf("|     Copyright 2021 - Develop by Garllockhart     |\n");
 	printf("|==================================================|\n");
@@ -40,6 +41,8 @@ int Welcome()
 			break;
 		case 4:
 			BinaryToDecimal();
+		case 5:
+			OctalToDecimal();
 	 	default:
 	 		printf("ERROR : Sorry I don't know the answer to this one!!!\n");
 	 		printf("Press Any Key to continue . . .");

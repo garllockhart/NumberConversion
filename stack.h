@@ -15,7 +15,7 @@ typedef int itemtype;
 
 typedef struct
 {
-	itemtype item[300];
+	itemtype item[20];
 	int count;
 }stack;
 

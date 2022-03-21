@@ -8,7 +8,7 @@ Create at		: 20/03/2022
 #include "conversion.h"
 
 void DecimalToBinary(){
-	int Input, Vol, Index, NumberOfValue, Value, I, Number, Index2;
+	int Input, Vol, Index, NumberOfValue, Remnant, I;
 	stack DataStack;
 	
 	Init(&DataStack);
@@ -17,17 +17,16 @@ void DecimalToBinary(){
 	
 	system("cls");
 	
-	for(I = 1, NumberOfValue = Input; NumberOfValue > 0; NumberOfValue = NumberOfValue / 2, I++, Value != 0) {
+	NumberOfValue = Input;
+	
+	for(I = 1; NumberOfValue > 0; NumberOfValue = NumberOfValue / 2, I++) {
 		Vol = I;
-		Value = NumberOfValue % 2;
+		Remnant = NumberOfValue % 2;
 		
-		printf("%d / 2 = %d, Sisa Bagi %d", NumberOfValue, NumberOfValue / 2, Value);
+		printf("%d / 2 = %d, Sisa Bagi %d", NumberOfValue, NumberOfValue / 2, Remnant);
 		printf("\n");
 		
-		Number += Value * Index2;
-		Index2 *= 10;
-		
-		Push(Value, &DataStack);
+		Push(Remnant, &DataStack);
 	}
 	
 	printf("\n");
@@ -48,7 +47,7 @@ void DecimalToBinary(){
 }
 
 void DecimalToOctal() {
-	int Input, Vol, Index, NumberOfValue, Value, I, Number, Index2;
+	int Input, Vol, Index, NumberOfValue, Remnant, I;
 	stack DataStack;
 	
 	Init(&DataStack);
@@ -57,17 +56,16 @@ void DecimalToOctal() {
 	
 	system("cls");
 	
-	for(I = 1, NumberOfValue = Input; NumberOfValue > 0; NumberOfValue = NumberOfValue / 8, I++) {
+	NumberOfValue = Input;
+	
+	for(I = 1; NumberOfValue > 0; NumberOfValue = NumberOfValue / 8, I++) {
 		Vol = I;
-		Value = NumberOfValue % 8;
+		Remnant = NumberOfValue % 8;
 		
-		printf("%d / 8 = %d, Sisa Bagi = %d", NumberOfValue, NumberOfValue / 8, Value);
+		printf("%d / 8 = %d, Sisa Bagi = %d", NumberOfValue, NumberOfValue / 8, Remnant);
 		printf("\n");
 		
-		Number += Value * Index2;
-		Index2 *= 10;
-		
-		Push(Value, &DataStack);
+		Push(Remnant, &DataStack);
  	}
  	
  	printf("\n");
@@ -88,25 +86,25 @@ void DecimalToOctal() {
 }
 
 void DecimalToHexadecimal() {
-	int Input, Vol, Index, NumberOfValue, Value, I, FinalValue, Number, Index2;
+	int Input, Vol, Index, NumberOfValue, Remnant, I, FinalValue;
 	stack DataStack;
-	
-	system("cls");
 	
 	Init(&DataStack);
 	printf("Enter Decimal Number = ");
 	scanf("%d", &Input);
 	
-	for(I = 1, NumberOfValue = Input; NumberOfValue > 0; NumberOfValue = NumberOfValue / 16, I++) {
+	system("cls");
+	
+	NumberOfValue = Input;
+	
+	for(I = 1; NumberOfValue > 0; NumberOfValue = NumberOfValue / 16, I++) {
 		Vol = I;
-		Value = NumberOfValue % 16;
+		Remnant = NumberOfValue % 16;
 		
-		printf("%d / 16 = %d, Sisa Bagi = %d", NumberOfValue, NumberOfValue / 16, Value);
+		printf("%d / 16 = %d, Sisa Bagi = %d", NumberOfValue, NumberOfValue / 16, Remnant);
 		printf("\n");
 		
-		Number += Value * Index2;
-		Index2 *= 10;
-		Push(Value, &DataStack);
+		Push(Remnant, &DataStack);
 	}
 	
 	printf("\n");
@@ -143,7 +141,7 @@ void DecimalToHexadecimal() {
 }
 
 void BinaryToDecimal() {
-	int Input, Index, NumberOfValue = 0, Value, Total, FixNumber = 1;
+	int Input, Index, NumberOfValue = 0, Remnant, Total, FixNumber = 1;
 	stack DataStack;
 	
 	system("cls");
@@ -153,9 +151,10 @@ void BinaryToDecimal() {
 	scanf("%d", &Input);
 	
 	NumberOfValue = Input;
+	
 	while(NumberOfValue != 0) {
-		Value = NumberOfValue % 10;
-		Total = Total + Value * FixNumber;
+		Remnant = NumberOfValue % 10;
+		Total = Total + Remnant * FixNumber;
 		
 		Push(Total, &DataStack);
 		
@@ -164,7 +163,7 @@ void BinaryToDecimal() {
 	}
 	
 	printf("\n");
-	printf("The result of converting a decimal number %d to an hexadecimal number is ", Input);
+	printf("The result of converting a binary number %d to an decimal number is ", Input);
 	
 	for(Index = 1; Index > 0; Index--) {
 		printf("%d", Pop(&DataStack));
@@ -176,6 +175,45 @@ void BinaryToDecimal() {
 	getch();
 			
 	system("cls");
+	
+	Welcome();
+}
+
+void OctalToDecimal() {
+	int Input, Index, NumberOfValue = 0, Remnant, Total, FixNumber = 1;
+	stack DataStack;
+	
+	system("cls");
+	
+	Init(&DataStack);
+	printf("Enter Decimal Number = ");
+	scanf("%d", &Input);
+	
+	NumberOfValue = Input;
+	
+	while(NumberOfValue != 0) {
+		Remnant = NumberOfValue % 10;
+		Total = Total + Remnant * FixNumber;
 		
+		Push(Total, &DataStack);
+		
+		NumberOfValue = NumberOfValue / 10;
+		FixNumber = FixNumber * 8;
+	}
+	
+	printf("\n");
+	printf("The result of converting a binary number %d to an decimal number is ", Input);
+	
+	for(Index = 1; Index > 0; Index--) {
+		printf("%d", Pop(&DataStack));
+ 	}
+ 	
+ 	printf("\n");
+	printf("Press Any Key to continue . . ."); 
+		
+	getch();
+			
+	system("cls");
+	
 	Welcome();
 }

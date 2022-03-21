@@ -9,6 +9,7 @@ Create at		: 20/03/2022
 #define conversion_H
 
 #include <stdlib.h>
+#include <string.h>
 #include "stack.h"
 #include "welcome.h"
 
@@ -16,5 +17,6 @@ void DecimalToBinary();
 void DecimalToOctal();
 void DecimalToHexadecimal();
 void BinaryToDecimal();
+void OctalToDecimal();
 
 #endif
